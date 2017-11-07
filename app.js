@@ -1,5 +1,5 @@
 const API_KEY = 'oMyHno2Mn152yopJ2mS9cC2rDDC1dENf';
-const BASE_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}`;
+const BASE_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&limit=5`;
 
 const gifForm = document.querySelector('#gif-form');
 const gifInput = gifForm.querySelector('#gif-search-input');
@@ -16,6 +16,7 @@ const searchGiphy = (inputText = 'test') => {
 }
 
 const updateFields = (data) => {
+  console.log(data);//verify limit of 5
   gifImg.src = data[0].images.original.url;
   gifImgText.innerText = data[0].images.original.url;
 }
