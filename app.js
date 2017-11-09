@@ -8,8 +8,8 @@ gifInput.focus();
 
 const gifList = document.querySelector('#gif-list');
 
-const searchGiphy = (inputText = 'test') => {
-  return fetch(`${BASE_URL}&limit=${gifLimit.value}&q=${inputText}`)
+const searchGiphy = (inputText = 'test', searchLimit = gifLimit.value) => {
+  return fetch(`${BASE_URL}&limit=${searchLimit}&q=${inputText}`)
   .catch(e => {
     console.log('not found');
   })
@@ -39,7 +39,7 @@ const createFields = (data) => {
       gifList.appendChild(gifContainer);
     });
   } else {
-    searchGiphy('nothing')
+    searchGiphy('nothing', 1)
     .then(data => {
       createFields(data);
     })
