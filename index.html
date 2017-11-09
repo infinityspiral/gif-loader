@@ -12,7 +12,15 @@
 <body>
   <div class="container">
     <form id="gif-form">
-      <input id="gif-search-input" type="text" />
+      <input id="gif-search-input" type="text" placeholder="Search" />
+
+      <select id="gif-search-limit">
+        <option value="15">15 Results</option>
+        <option value="10">10 Results</option>
+        <option value="5">5 Results</option>
+        <option value="1">Lucky</option>
+      </select>
+
       <button id="gif-search-button">search</button>
     </form>
     <div id="gif-list">
