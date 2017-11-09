@@ -12,6 +12,10 @@ input, select, button {
   input:active, input:focus, select:active, select:focus, button:active, button:focus {
     outline: none; }
 
+p {
+  color: goldenrod;
+  font-size: 12px; }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -59,8 +63,6 @@ input, select, button {
     transition: all ease-in-out .5s; }
   .gif-container p {
     text-align: center;
-    color: goldenrod;
-    font-size: 12px;
     background: #1d1d1e;
     border: 1px solid rgba(218, 165, 32, 0.4);
     border-radius: 4px;

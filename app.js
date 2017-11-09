@@ -11,7 +11,9 @@ const gifList = document.querySelector('#gif-list');
 const searchGiphy = (inputText = 'test', searchLimit = gifLimit.value) => {
   return fetch(`${BASE_URL}&limit=${searchLimit}&q=${inputText}`)
   .catch(e => {
-    console.log('not found');
+    const feedback = document.createElement('p')
+    feedback.innerText = 'Request was rejected.';
+    gifList.appendChild(feedback);
   })
   .then(res => res.json())
   .then(data => data.data)

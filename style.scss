@@ -17,6 +17,11 @@ input, select, button {
 
     }
 }
+p {
+    color: goldenrod;
+    font-size: 12px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -73,8 +78,6 @@ input, select, button {
 
     p {
         text-align: center;
-        color: goldenrod;
-        font-size: 12px;
         background: darken($colorBackground, 5%);
         border: 1px solid transparentize(goldenrod,.6);
         border-radius: 4px;
