@@ -25,19 +25,19 @@ body {
   border: none;
 }
 
-#gif-container {
+.gif-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#gif-container img {
+.gif-container img {
   max-width: 100%;
   border: 3px solid mistyrose;
   border-radius: 2%;
 }
 
-#gif-container p {
+.gif-container p {
   text-align: center;
   color: goldenrod;
 }

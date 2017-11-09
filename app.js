@@ -5,20 +5,43 @@ const gifForm = document.querySelector('#gif-form');
 const gifInput = gifForm.querySelector('#gif-search-input');
 gifInput.focus();
 
-const gifContainer = document.querySelector('#gif-container');
-const gifImg = gifContainer.querySelector('img');
-const gifImgText = gifContainer.querySelector('p');
+const gifList = document.querySelector('#gif-list');
 
 const searchGiphy = (inputText = 'test') => {
   return fetch(`${BASE_URL}&q=${inputText}`)
+  .catch(e => {
+    console.log('not found');
+  })
   .then(res => res.json())
-  .then(data => data.data)
+  .then(data => data.data, (e) => {
+    console.log(e);
+  })
 }
 
-const updateFields = (data) => {
-  console.log(data);//verify limit of 5
-  gifImg.src = data[0].images.original.url;
-  gifImgText.innerText = data[0].images.original.url;
+const createFields = (data) => {
+  gifList.innerHTML = '';
+
+  if (data.length){
+    data.map(gifItem => {
+      const gifContainer = document.createElement('div');
+      const gifImage = document.createElement('img');
+      const gifText = document.createElement('p');
+
+      gifContainer.className = 'gif-container';
+      gifImage.src = gifItem.images.fixed_width.url;
+      gifText.innerText = gifItem.images.fixed_width.url;
+
+      gifContainer.appendChild(gifImage);
+      gifContainer.appendChild(gifText);
+
+      gifList.appendChild(gifContainer);
+    });
+  } else {
+    searchGiphy('nothing')
+    .then(data => {
+      createFields(data);
+    })
+  }
 }
 
 gifForm.addEventListener('submit', (e)=> {
@@ -27,6 +50,6 @@ gifForm.addEventListener('submit', (e)=> {
   const inputText = gifInput.value;
   searchGiphy(inputText)
   .then(data => {
-    updateFields(data);
+    createFields(data);
   })
 })
